@@ -1,0 +1,65 @@
+
+services:
+  server_nginx:
+    build:
+      context: ./docker_stack/nginx/.
+    depends_on:
+      - php_82
+      - mysql_8
+    container_name: server_nginx
+    ports:
+      - 8081:80
+    volumes:
+      - ./backend_green:/var/www/html
+    networks:
+      - laravel
+  php_82:
+    build:
+      context: ./docker_stack/php/.
+    container_name: php_82
+    volumes:
+      - ./backend_green:/var/www/html
+      - ./docker_stack/php/php.ini:/usr/local/etc/php/php.ini
+    networks:
+      - laravel
+  mysql_8:
+    image: mysql:8.0.28
+    container_name: mysql_8
+    command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=42505856 --general-log=1 --general-log-file=/logs/general-log.log
+    restart: always
+    ports:
+      - 3310:3306
+    volumes:
+      - volume-mysql:/var/lib/mysql
+      - ./docker_stack/mysql/logs:/logs
+    environment:
+      MYSQL_DATABASE: ${MYSQL_DATABASE}
+      MYSQL_USER: ${MYSQL_USER}
+      MYSQL_PASSWORD: ${MYSQL_PASSWORD}
+      MYSQL_ROOT_PASSWORD: ${MYSQL_ROOT_PASSWORD}
+    networks:
+      - laravel
+  frontend_react:
+    build:
+      context: ./frontend_react   
+      dockerfile: ../docker_stack/react/Dockerfile  
+    container_name: frontend_react
+    ports:
+      - 5173:5173
+    volumes:
+      - ./frontend_react:/app
+    networks:
+      - laravel
+    environment:
+      - NODE_ENV=development
+      - VITE_API_BASE_URL=http://server_nginx
+    depends_on:
+      - php_82
+networks:
+  laravel:
+    name: laravel
+volumes:
+  volume-mysql:
+    name: volume-mysql
+
+#23_SOLO_yo_2386
