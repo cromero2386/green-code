@@ -1,0 +1,6 @@
+docker_stack/mysql/logs/
+.env
+backend_green/vendor/
+backend_green/node_modules/
+frontend_react/node_modules/
+.DS_Store

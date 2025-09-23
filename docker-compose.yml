@@ -28,7 +28,7 @@ services:
     command: --default-authentication-plugin=mysql_native_password --max_allowed_packet=42505856 --general-log=1 --general-log-file=/logs/general-log.log
     restart: always
     ports:
-      - 3310:3306
+      - 3311:3306
     volumes:
       - volume-mysql:/var/lib/mysql
       - ./docker_stack/mysql/logs:/logs
