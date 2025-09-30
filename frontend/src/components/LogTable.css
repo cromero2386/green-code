@@ -1,0 +1,78 @@
+.log-viewer {
+    padding: 20px;
+    font-family: Arial, sans-serif;
+}
+
+.log-filters {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 15px;
+}
+
+.log-filters input {
+    padding: 6px 10px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+}
+
+.log-table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+.log-table th,
+.log-table td {
+    padding: 8px 12px;
+    border-bottom: 1px solid #eee;
+    text-align: left;
+}
+
+.log-table th {
+    background: #f9f9f9;
+    font-weight: bold;
+}
+
+.log-table tr:hover {
+    background: #fafafa;
+}
+
+.log-level-DEBUG {
+    color: #007bff;
+}
+
+.log-level-INFO {
+    color: #28a745;
+}
+
+.log-level-WARNING {
+    color: #ffc107;
+}
+
+.log-level-ERROR {
+    color: #dc3545;
+}
+
+.log-level-CRITICAL {
+    color: #6f42c1;
+}
+
+.pagination {
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+.pagination button {
+    padding: 5px 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    background: white;
+    cursor: pointer;
+}
+
+.pagination button:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
