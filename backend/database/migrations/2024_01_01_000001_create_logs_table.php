@@ -10,8 +10,12 @@ class CreateLogsTable extends Migration
     {
         Schema::create('logs', function (Blueprint $table) {
             $table->id();
-            $table->string('message');
+            $table->timestamp('timestamp');
             $table->foreignId('log_level_id')->constrained('log_levels')->onDelete('cascade');
+            $table->string('source');
+            $table->text('message');
+            $table->string('request_id')->nullable();
+            $table->unsignedInteger('user_id')->nullable();
             $table->timestamps();
         });
     }

@@ -10,8 +10,12 @@ class Log extends Model
     use HasFactory;
 
     protected $fillable = [
-        'message',
+        'timestamp',
         'log_level_id',
+        'source',
+        'message',
+        'request_id',
+        'user_id',
     ];
 
     public function logLevel()
