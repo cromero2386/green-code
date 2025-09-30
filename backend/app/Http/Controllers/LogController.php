@@ -35,7 +35,7 @@ class LogController extends Controller
             ->when($query, function ($q) use ($query) {
                 $q->whereLike('message', '%'.$query.'%');
             })
-            ->when($query, function ($q) use ($source) {
+            ->when($source, function ($q) use ($source) {
                 $q->whereLike('source', '%'.$source.'%');
             })            
             ->with('logLevel')
