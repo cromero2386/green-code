@@ -8,9 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
 class LogController extends Controller
-{
-    private $ttl = 900; // 15 minutes in seconds    
-
+{    
     public function apiResponse($code, $message, $data = []){
         return response()->json([
             'code' => $code,
