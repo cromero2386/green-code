@@ -43,11 +43,12 @@ The backend is built using Laravel and provides an API for managing logs. It inc
 - **Models**: `Log` and `LogLevel` with a one-to-many relationship.
 - **Controllers**: `LogController` to handle API requests.
 - **Migrations**: To create the necessary database tables.
-- **Seeders**: To populate the database with 5000 log entries.
+- **Seeders**: To populate the database with 5000 dummy log entries or 500k imported logs.
+- **Database**: The last version includes a database filled with 500k logs.
 
 ### API Endpoint
 
-- **GET /api/logs**: Returns all logs with their associated log levels.
+- **GET /api/logs**: Returns all logs with their associated log levels with pagination.
 
 ## Frontend
 
@@ -67,7 +68,7 @@ The frontend is built using React and displays logs in a filterable table. It in
 
 - Laravel for the backend
 - React for the frontend
-- MySQL for the database
+- SQLite for the database
 - Docker for containerization
 
 ## License
