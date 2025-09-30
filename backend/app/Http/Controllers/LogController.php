@@ -24,6 +24,7 @@ class LogController extends Controller
     {           
         $query = $request->input('query');
         $level = $request->input('level');
+        $source = $request->input('source');
         $paginate = $request->input('paginate');
                         
         $logs = Log::whereHas('logLevel',function ($q) use ($level) {
@@ -33,6 +34,9 @@ class LogController extends Controller
             })
             ->when($query, function ($q) use ($query) {
                 $q->whereLike('message', '%'.$query.'%');
+            })
+            ->when($query, function ($q) use ($source) {
+                $q->whereLike('source', '%'.$source.'%');
             })            
             ->with('logLevel')
             ->paginate($paginate);
